@@ -1,15 +1,17 @@
 function stringChop(str, size) {
-  // your code her
- if (!str) return []; // Return an empty array if the input string is null or empty
+  if (!str) return []; // Handle null or empty string
+  size = Number(size); // Convert size to a number
+  if (isNaN(size) || size <= 0) return []; // Handle invalid chunk sizes
 
-    const chunks = [];
-    for (let i = 0; i < str.length; i += size) {
-        chunks.push(str.substring(i, i + size));
-    }
-    
-    return chunks;
+  const chunks = [];
+  for (let i = 0; i < str.length; i += size) {
+    chunks.push(str.substring(i, i + size));
+  }
+  
+  return chunks;
+}
 
 // Do not change the code below
 const str = prompt("Enter String.");
 const size = prompt("Enter Chunk Size.");
-alert(stringChop(str, size));
+alert(JSON.stringify(stringChop(str, size))); // Convert array to string for alert
